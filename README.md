@@ -39,6 +39,15 @@
 | **紫色尖錐** | **大將軍** | 三年不動之凶神。長期佔據一個方位，該方位三年內不可修造 。 |
 | **黑色叉號** | **金神** | 七殺凶神。極具殺傷力的方位，絕對不可犯 。 |
 
+### ☯️ 隱藏的規律：天一與日遊的「輪班」機制
+
+本專案還原了陰陽道中一個精妙的**空間互補邏輯**：
+
+* **平時（防外）**：當**天一神**在人間遊行時（有方位禁忌），**日遊神**也在外遊蕩，此時重點在於防備外部方位。
+* **天一天上（防內）**：當**天一神**返回天上（即「天一天上」期間，外部百無禁忌）的這 16 天，**日遊神** 恰好會**進入屋內**。
+    * **現象**：你會在 3D 羅盤上看到，當金色的天一神升空（大吉）時，紅色的日遊神會同時鑽入內圈（凶）。
+    * **意義**：這代表雖然出門大吉，但屋內卻嚴禁掃除與安床。這確保了人們在任何時候都有必須敬畏的對象。
+      
 ### 參考文獻
 
 本專案之曆法算法與神煞邏輯，嚴謹考據自以下學術著作：
@@ -85,6 +94,15 @@
 | **赤色の立方体** | **日遊神** | 凶神。内円に現れる時は「家中」に在り、その方位での掃除や安床は不可とされる 。 |
 | **紫色の円錐** | **大将軍** | 三年塞がりの凶神。長期間特定の方位に居座り、その方位での修造は三年間禁止される 。 |
 | **黒色の十字** | **金神** | 七殺の凶神。極めて強い殺気を持つ方位であり、決して犯してはならない 。 |
+
+### ☯️ 隠された法則：天一神と日遊神の「交替」
+
+本プロジェクトは、陰陽道における精妙な**空間的補完関係**を再現しています。
+
+* **通常（外の禁忌）**：**天一神**が地上を遊行している間（方位の禁忌あり）、**日遊神**も外にいます。
+* **天一天上（内の禁忌）**：**天一神**が天に帰る（「天一天上」、外部の禁忌なし）16日間、**日遊神**はちょうど入れ替わりで**家の中に侵入**します。
+    * **現象**：3D羅盤上では、金色の天一神が昇天（大吉）すると同時に、赤色の日遊神が内円に移動（凶）する様子が確認できます。
+    * **意味**：これは「外出は大吉だが、屋内の掃除や安床は厳禁」という状態を意味します。人々がいかなる時も畏敬の念を忘れないための仕組みです。
 
 ### 参考文献
 
@@ -133,6 +151,15 @@ The visualization uses specific geometric forms to represent different deities a
 | **Purple Cone** | **Taishogun** | A major directional taboo deity. Remains stationary in one cardinal direction for three-year cycles. |
 | **Black Cross** | **Konjin** | The Seven-Kill deity. Indicates highly inauspicious directions for the year. |
 
+### ☯️ The Hidden Balance: The "Shift Change" of Deities
+
+This project visualizes a sophisticated **spatial complementary logic** found in Onmyodo:
+
+* **Normal Days (Guard Outside)**: When **Tenichijin** wanders the earth (creating directional taboos), **Nichiyu** is also outside.
+* **Tenichi Tenjo (Guard Inside)**: During the 16 days when **Tenichijin** ascends to heaven (clearing outdoor taboos), **Nichiyu** precisely **enters the house**.
+    * **Observation**: On the 3D compass, you will see that as the golden Tenichijin rises to the sky (Auspicious), the red Nichiyu simultaneously moves into the inner circle (Inauspicious).
+    * **Significance**: This signifies that while travel is lucky, domestic activities like cleaning or moving furniture become strictly taboo. It ensures that there is always a presence to be revered, whether inside or outside.
+      
 ### References
 
 The algorithms and logic for the directional deities are based on the following academic work:
