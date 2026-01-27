@@ -1,0 +1,231 @@
+:root {
+  --bg-color: #0b1222;
+  --panel-bg: rgba(18, 22, 36, 0.92);
+  --text-color: #F2F7FF;
+
+  --muted-text: #B9C3D6;
+  --border-color: #6A789A;
+
+  --accent-gold: #FFD76A;
+  --accent-red: #FF6268;
+
+  --shadow-strong: 0 14px 70px rgba(0,0,0,0.55);
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background-color: var(--bg-color);
+  font-family: "Microsoft JhengHei", serif;
+  color: var(--text-color);
+  transition: background 0.5s;
+}
+
+#top-bar {
+  position: absolute; top: 0; width: 100%; padding: 15px 25px;
+  display: flex; justify-content: space-between; align-items: center;
+  box-sizing: border-box; z-index: 10;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.65), transparent);
+  pointer-events: none;
+  gap: 12px;
+}
+
+h1 {
+  font-size: 1.5rem;
+  color: var(--accent-gold);
+  margin: 0;
+  text-shadow: 0 0 16px rgba(255, 215, 106, 0.35);
+  pointer-events: auto;
+  user-select: none;
+  white-space: nowrap;
+}
+
+/* ===== 語系切換 ===== */
+#lang-switch {
+  pointer-events: auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+#lang-switch button{
+  padding: 6px 10px;
+  font-size: 0.85rem;
+}
+#lang-switch button.active{
+  border-color: var(--accent-gold);
+  background: color-mix(in srgb, var(--accent-gold) 18%, var(--panel-bg));
+}
+
+#ui-container {
+  position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+  width: 90%; max-width: 800px;
+  background: var(--panel-bg); padding: 20px;
+  border: 1px solid color-mix(in srgb, var(--border-color) 85%, transparent);
+  border-top: 3px solid var(--accent-gold);
+  border-radius: 10px;
+  box-shadow: var(--shadow-strong);
+  backdrop-filter: blur(12px);
+  pointer-events: auto;
+  z-index: 8;
+}
+
+#date-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 15px;
+  border-bottom: 1px solid color-mix(in srgb, var(--text-color) 18%, transparent);
+  padding-bottom: 8px;
+  gap: 12px;
+}
+
+#date-display { font-size: 1.85rem; font-weight: 800; letter-spacing: 0.02em; }
+#ganzhi-display { color: var(--accent-gold); font-size: 1.05rem; text-align: right; }
+
+#info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 15px;
+  font-size: 0.98rem;
+}
+
+.info-cell span:first-child {
+  color: var(--muted-text);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.val-good { color: var(--accent-gold); font-weight: 800; }
+.val-bad { color: var(--accent-red); font-weight: 800; }
+
+.controls-row { display: flex; gap: 15px; align-items: center; }
+input[type=range] { flex-grow: 1; cursor: pointer; }
+
+button {
+  background: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  color: var(--accent-gold);
+  padding: 6px 14px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: 0.25s;
+  user-select: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+button:hover {
+  background: color-mix(in srgb, var(--accent-gold) 18%, var(--panel-bg));
+  border-color: var(--accent-gold);
+  transform: translateY(-1px);
+}
+
+#loading-overlay {
+  position: absolute; top:0; left:0; width:100%; height:100%;
+  background: #070a12; z-index: 100;
+  display: flex; justify-content: center; align-items: center;
+  flex-direction: column;
+  color: var(--accent-gold); font-size: 1.2rem;
+  transition: opacity 1s ease;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#error-log {
+  margin-top: 20px;
+  color: #ff6666;
+  font-size: 0.85rem;
+  background: rgba(0,0,0,0.45);
+  padding: 10px;
+  border-radius: 6px;
+  display: none;
+  max-width: 80%;
+  word-break: break-all;
+}
+
+/* ===== 土公 2D 視覺化面板 ===== */
+#doko-map-panel{
+  position:absolute;
+  right: 18px;
+  top: 92px;
+  width: 300px;
+  background: var(--panel-bg);
+  border: 1px solid color-mix(in srgb, var(--border-color) 85%, transparent);
+  border-top: 3px solid var(--accent-gold);
+  border-radius: 10px;
+  box-shadow: var(--shadow-strong);
+  backdrop-filter: blur(12px);
+  z-index: 9;
+  pointer-events: auto;
+  padding: 12px 12px 10px 12px;
+  box-sizing: border-box;
+}
+
+#doko-map-title{
+  display:flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 0 0 8px 0;
+  gap: 10px;
+}
+
+#doko-map-title .t{
+  font-weight: 900;
+  letter-spacing: .03em;
+  color: var(--accent-gold);
+  text-shadow: 0 0 14px rgba(255, 215, 106, 0.18);
+}
+
+#doko-map-title .s{
+  font-size: 12px;
+  color: var(--muted-text);
+  white-space: nowrap;
+}
+
+#doko-map{
+  width: 100%;
+  height: auto;
+  display:block;
+  border-radius: 8px;
+  border: 1px solid color-mix(in srgb, var(--border-color) 70%, transparent);
+  background: color-mix(in srgb, var(--panel-bg) 55%, transparent);
+}
+
+#doko-map-legend{
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--muted-text);
+  display:flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding: 2px 8px;
+  border: 1px solid color-mix(in srgb, var(--border-color) 70%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--panel-bg) 65%, transparent);
+}
+
+.dot{
+  width:10px; height:10px; border-radius: 50%;
+  background: var(--accent-gold);
+  box-shadow: 0 0 12px rgba(255,215,106,0.28);
+}
+.dot.hl{
+  background: var(--accent-gold);
+  box-shadow: 0 0 18px rgba(255,215,106,0.55);
+}
+
+@media (max-width: 900px){
+  #doko-map-panel{
+    width: 260px;
+    right: 10px;
+    top: 78px;
+  }
+}
