@@ -975,10 +975,67 @@ function updateScene(idx) {
   moveKonMulti(konGroup, row['金神'], 13);
 
   drawDokoBlock(idx);
+
+  // Sync date picker
+  const picker = document.getElementById('date-picker');
+  if(picker && row['日期']){
+    // row['日期'] format is YYYY-MM-DD
+    picker.value = row['日期'];
+  }
 }
 
 // ===== UI/控制（slider：限制在今天±一年範圍內）=====
 const slider = document.getElementById('date-slider');
+const datePicker = document.getElementById('date-picker');
+
+// Date Picker Event
+if(datePicker){
+  datePicker.addEventListener('change', (e) => {
+    stopPlay();
+    const val = e.target.value; // YYYY-MM-DD
+    if(!val) return;
+
+    // Find closest index
+    const targetDate = parseISODateStrict(val);
+    if(!targetDate) return;
+    
+    // Simple search in dateIndexMeta
+    // Since dateIndexMeta is sorted by date, we could use binary search, 
+    // but linear scan is fine for ~3000 rows.
+    let bestIdx = -1;
+    let minDiff = Infinity;
+
+    for(let i=0; i<dateIndexMeta.length; i++){
+       const d = dateIndexMeta[i].date;
+       if(!d) continue;
+       const diff = Math.abs(d - targetDate);
+       if(diff < minDiff){
+         minDiff = diff;
+         bestIdx = i;
+       }
+    }
+
+    if(bestIdx !== -1){
+      // Clamp to slider range if needed, or expand range? 
+      // Current design limits slider range. Let's just set it.
+      // If the picked date is outside the slider range (today ± 1 year), 
+      // the slider UI might look weird or we should update sliderMin/Max.
+      // For now, let's just jump to it.
+      currentIndex = bestIdx;
+      
+      // Update slider value if within range
+      if(currentIndex >= slider.min && currentIndex <= slider.max){
+        slider.value = currentIndex;
+      } else {
+         // If out of range, maybe we should warn or just let it be?
+         // Let's at least update the scene.
+         // Note: If slider is out of sync, next interaction with slider might jump.
+      }
+      updateScene(currentIndex);
+    }
+  });
+}
+
 
 function clampToSliderRange(v){
   const minV = Number(slider.min);
